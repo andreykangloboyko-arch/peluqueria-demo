@@ -1,0 +1,355 @@
+```css
+/* =========================
+   ESTILOS GENERALES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f8f5f0;
+    color: #1c1c1c;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+header {
+    background: #f8f5f0;
+    padding: 22px 7%;
+    border-bottom: 1px solid #e5ded4;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+
+.menu {
+    display: flex;
+    gap: 35px;
+}
+
+.menu a {
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    opacity: 0.5;
+}
+
+.boton-nav {
+    background: #1c1c1c;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+}
+
+
+/* =========================
+   PORTADA
+========================= */
+
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    padding: 80px 7%;
+    background:
+        linear-gradient(
+            90deg,
+            #f8f5f0 0%,
+            #f8f5f0 55%,
+            #ded6ca 100%
+        );
+}
+
+.hero-text {
+    max-width: 650px;
+}
+
+.mini-titulo {
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #777;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 8vw, 100px);
+    line-height: 0.95;
+    font-weight: 500;
+    letter-spacing: -4px;
+    margin-bottom: 30px;
+}
+
+.descripcion {
+    max-width: 500px;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 35px;
+}
+
+.boton {
+    display: inline-block;
+    background: #1c1c1c;
+    color: white;
+    padding: 15px 28px;
+    border-radius: 30px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    transform: translateY(-3px);
+    opacity: 0.85;
+}
+
+
+/* =========================
+   SECCIONES
+========================= */
+
+.seccion {
+    padding: 110px 7%;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.seccion h2,
+.nosotros h2,
+.contacto h2 {
+    font-size: 55px;
+    font-weight: 500;
+    letter-spacing: -2px;
+    margin-bottom: 55px;
+}
+
+
+/* =========================
+   SERVICIOS
+========================= */
+
+.servicios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.tarjeta {
+    background: white;
+    padding: 40px;
+    min-height: 300px;
+    border: 1px solid #e5ded4;
+    transition: 0.3s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-8px);
+}
+
+.tarjeta span {
+    font-size: 13px;
+    color: #999;
+}
+
+.tarjeta h3 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 35px 0 15px;
+}
+
+.tarjeta p {
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.tarjeta strong {
+    font-size: 14px;
+}
+
+
+/* =========================
+   NOSOTROS
+========================= */
+
+.nosotros {
+    background: #1c1c1c;
+    color: white;
+    padding: 110px 7%;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.nosotros > div:first-child {
+    max-width: 650px;
+}
+
+.nosotros .mini-titulo {
+    color: #aaa;
+}
+
+.nosotros h2 {
+    margin-bottom: 30px;
+}
+
+.nosotros p:not(.mini-titulo) {
+    color: #bbb;
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.numero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 220px;
+}
+
+.numero strong {
+    font-size: 80px;
+    font-weight: 400;
+}
+
+.numero span {
+    color: #aaa;
+}
+
+
+/* =========================
+   CONTACTO
+========================= */
+
+.contacto {
+    text-align: center;
+    padding: 120px 7%;
+    max-width: 850px;
+    margin: auto;
+}
+
+.contacto h2 {
+    margin-bottom: 20px;
+}
+
+.contacto > p:not(.mini-titulo) {
+    color: #777;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+
+.datos {
+    margin-bottom: 35px;
+}
+
+.datos p {
+    margin: 10px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #1c1c1c;
+    color: white;
+    padding: 35px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    color: #999;
+    font-size: 13px;
+}
+
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 20px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .hero {
+        min-height: 600px;
+        padding: 60px 25px;
+        background: #f8f5f0;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+        letter-spacing: -3px;
+    }
+
+    .descripcion {
+        font-size: 16px;
+    }
+
+    .seccion {
+        padding: 80px 25px;
+    }
+
+    .seccion h2,
+    .nosotros h2,
+    .contacto h2 {
+        font-size: 42px;
+    }
+
+    .servicios {
+        grid-template-columns: 1fr;
+    }
+
+    .nosotros {
+        padding: 80px 25px;
+        flex-direction: column;
+    }
+
+    .numero {
+        margin-top: 20px;
+    }
+
+    footer {
+        padding: 30px 25px;
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+```
