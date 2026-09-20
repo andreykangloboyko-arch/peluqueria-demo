@@ -1,176 +1,505 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMIÈRE | Peluquería & Estilo Profesional</title>
+    <style>
+        /* Variables Globales y Reset */
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #c5a059; /* Dorado elegante */
+            --bg-light: #f9f9f9;
+            --text-dark: #2c2c2c;
+            --text-muted: #666666;
+            --white: #ffffff;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    <title>Peluquería Bella | Tu estilo, nuestra pasión</title>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
 
-    <link rel="stylesheet" href="style.css">
+        body {
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        /* Navegación */
+        header {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-reserve {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.6rem 1.4rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-reserve:hover {
+            background-color: #b08d46;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1rem;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        /* Contenedores Generales */
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        /* Servicios / Precios */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .price-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 3px solid var(--accent-color);
+        }
+
+        .price-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            font-weight: 500;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        /* Sobre Nosotros */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Testimonios */
+        .testimonials {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .testimonials .section-title {
+            color: var(--white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: #262626;
+            padding: 2rem;
+            border-radius: 6px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            margin-top: 1rem;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* Contacto */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .info-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input, 
+        .contact-form select, 
+        .contact-form textarea {
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #888;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #222;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-    <!-- NAVEGACIÓN -->
+    <!-- Navegación -->
     <header>
         <nav>
-            <div class="logo">BELLA</div>
-
-            <div class="menu">
-                <a href="#servicios">Servicios</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="#contacto">Contacto</a>
-            </div>
-
-            <a class="boton-nav" href="#contacto">Reservar cita</a>
+            <div class="logo">LUMIÈRE <span>HAIR</span></div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios & Precios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#contacto" class="btn-reserve">Pedir Cita</a>
         </nav>
     </header>
 
-
-    <!-- PORTADA -->
-    <section class="hero">
-
-        <div class="hero-text">
-
-            <p class="mini-titulo">PELUQUERÍA BELLA</p>
-
-            <h1>
-                Tu estilo.
-                <br>
-                Nuestra pasión.
-            </h1>
-
-            <p class="descripcion">
-                Descubre un espacio donde belleza, estilo y cuidado
-                se unen para crear el look perfecto para ti.
-            </p>
-
-            <a class="boton" href="#contacto">
-                Reservar cita →
-            </a>
-
-        </div>
-
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <h1>Elegancia & Estilo para tu Cabello</h1>
+        <p>Experiencia de peluquería de alto nivel con un equipo de estilistas dedicados a resaltar tu belleza natural.</p>
+        <a href="#contacto" class="btn-reserve" style="padding: 1rem 2rem; font-size: 1.1rem;">Reserva tu Experiencia</a>
     </section>
 
-
-    <!-- SERVICIOS -->
-    <section id="servicios" class="seccion">
-
-        <p class="mini-titulo">LO QUE HACEMOS</p>
-
-        <h2>Nuestros servicios</h2>
-
-        <div class="servicios">
-
-            <div class="tarjeta">
-                <span>01</span>
-                <h3>Corte</h3>
-                <p>
-                    Cortes personalizados adaptados a tu estilo
-                    y tipo de cabello.
-                </p>
-                <strong>Desde 18€</strong>
+    <!-- Sobre Nosotros -->
+    <section id="nosotros" class="about">
+        <div class="section-container">
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="section-subtitle">Sobre Nosotros</p>
+                    <h2 class="section-title" style="text-align: left; margin-bottom: 1.5rem;">Más de 10 años definiendo tendencias</h2>
+                    <p>En LUMIÈRE Hair creemos que una visita a la peluquería debe ser un momento de relajación y transformación personal. Utilizamos únicamente productos de primera calidad para cuidar de la salud de tu cabello.</p>
+                    <p>Nuestro equipo está constantemente formándose en las últimas técnicas de corte, coloración y tratamientos capilares a nivel internacional.</p>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80" alt="Interior de la peluquería">
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="tarjeta">
-                <span>02</span>
-                <h3>Coloración</h3>
-                <p>
-                    Color, mechas y técnicas modernas para
-                    conseguir el resultado que buscas.
-                </p>
-                <strong>Desde 35€</strong>
+    <!-- Servicios y Precios -->
+    <section id="servicios">
+        <div class="section-container">
+            <p class="section-subtitle">Tarifas Transparentes</p>
+            <h2 class="section-title">Nuestros Servicios & Precios</h2>
+            
+            <div class="services-grid">
+                <!-- Tarjeta 1 -->
+                <div class="price-card">
+                    <h3>Corte & Peinado</h3>
+                    <div class="price-item">
+                        <span class="item-name">Corte Señora & Peinado</span>
+                        <span class="item-price">35 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="item-name">Corte Caballero</span>
+                        <span class="item-price">20 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="item-name">Peinado & Styling</span>
+                        <span class="item-price">22 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="item-name">Corte Infantil (hasta 10 años)</span>
+                        <span class="item-price">15 €</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="price-card">
+                    <h3>Coloración</h3>
+                    <div class="price-item">
+                        <span class="item-name">Tinte Raíz (Orgánico)</span>
+                        <span class="item-price">38 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="item-name">Mechas Balayage / Babylights</span>
+                        <span class="item-price">75 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="item-name">Matiz / Gloss</span>
+                        <span class="item-price">25 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="item-name">Decoloración Completa</span>
+                        <span class="item-price">Desde 60 €</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="price-card">
+                    <h3>Tratamientos Capilares</h3>
+                    <div class="price-item">
+                        <span class="item-name">Tratamiento de Hidratación</span>
+                        <span class="item-price">25 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="item-name">Alisado de Keratina</span>
+                        <span class="item-price">120 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="item-name">Bótox Capilar</span>
+                        <span class="item-price">55 €</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="item-name">Ritual Cuero Cabelludo</span>
+                        <span class="item-price">30 €</span>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="tarjeta">
-                <span>03</span>
-                <h3>Peinados</h3>
-                <p>
-                    Peinados para eventos, celebraciones
-                    o simplemente para sentirte genial.
-                </p>
-                <strong>Desde 25€</strong>
+    <!-- Testimonios -->
+    <section class="testimonials">
+        <div class="section-container">
+            <p class="section-subtitle">Opiniones de Clientes</p>
+            <h2 class="section-title">Lo que dicen de nosotros</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"El mejor trabajo de Balayage que me han hecho nunca. El trato es impecable y la atención al detalle es insuperable."</p>
+                    <div class="testimonial-author">- Elena R.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Un espacio profesional y relajante. Se nota el uso de productos de gama alta desde la primera lavada."</p>
+                    <div class="testimonial-author">- Carlos M.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Llevo viniendo 3 años y no cambio a mi estilista por nada del mundo. Puntuales, serios y de gran calidad."</p>
+                    <div class="testimonial-author">- Sofía G.</div>
+                </div>
             </div>
-
         </div>
-
     </section>
 
+    <!-- Contacto y Reservas -->
+    <section id="contacto">
+        <div class="section-container">
+            <p class="section-subtitle">Estamos a tu disposición</p>
+            <h2 class="section-title">Contacto & Citas</h2>
 
-    <!-- NOSOTROS -->
-    <section id="nosotros" class="nosotros">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <h4>Dirección</h4>
+                        <p>Av. Principal de la Ciudad, 124, Madrid</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Teléfono / WhatsApp</h4>
+                        <p>+34 912 345 678 / +34 600 000 000</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Correo Electrónico</h4>
+                        <p>contacto@lumierepeluqueria.com</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Horario de Atención</h4>
+                        <p>Lunes a Viernes: 09:30 - 20:00 h</p>
+                        <p>Sábados: 09:00 - 14:00 h</p>
+                        <p>Domingos: Cerrado</p>
+                    </div>
+                </div>
 
-        <div>
-
-            <p class="mini-titulo">SOBRE NOSOTROS</p>
-
-            <h2>
-                Más que una peluquería.
-            </h2>
-
-            <p>
-                En Peluquería Bella creemos que un buen corte
-                puede cambiar cómo te sientes.
-            </p>
-
-            <p>
-                Nuestro objetivo es ofrecerte un servicio
-                cercano, profesional y adaptado a ti.
-            </p>
-
+                <form class="contact-form" id="bookingForm">
+                    <input type="text" placeholder="Nombre completo" required>
+                    <input type="tel" placeholder="Número de teléfono" required>
+                    <select required>
+                        <option value="" disabled selected>Selecciona un servicio</option>
+                        <option value="corte">Corte & Peinado</option>
+                        <option value="color">Color / Mechas</option>
+                        <option value="tratamiento">Tratamiento Capilar</option>
+                    </select>
+                    <textarea rows="4" placeholder="Mensaje o fecha/hora preferida"></textarea>
+                    <button type="submit">Solicitar Cita</button>
+                </form>
+            </div>
         </div>
-
-        <div class="numero">
-            <strong>10+</strong>
-            <span>Años cuidando tu estilo</span>
-        </div>
-
     </section>
 
-
-    <!-- CONTACTO -->
-    <section id="contacto" class="contacto">
-
-        <p class="mini-titulo">RESERVA TU CITA</p>
-
-        <h2>
-            ¿Hablamos?
-        </h2>
-
-        <p>
-            Estamos en Madrid. Llámanos o escríbenos
-            para reservar tu próxima cita.
-        </p>
-
-        <div class="datos">
-
-            <p>📞 <strong>600 000 000</strong></p>
-
-            <p>📍 Madrid</p>
-
-            <p>🕐 Lunes – Sábado · 9:00 – 20:00</p>
-
-        </div>
-
-        <a class="boton" href="tel:+34600000000">
-            Llamar ahora →
-        </a>
-
-    </section>
-
-
-    <!-- FOOTER -->
+    <!-- Pie de página -->
     <footer>
-
-        <div class="logo">BELLA</div>
-
-        <p>
-            © 2026 Peluquería Bella
-        </p>
-
+        <p>&copy; 2026 LUMIÈRE Hair & Beauty. Todos los derechos reservados.</p>
     </footer>
 
+    <!-- Script para interacción ligera -->
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('¡Gracias por tu solicitud! Nos pondremos en contacto contigo lo antes posible para confirmar tu cita.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
