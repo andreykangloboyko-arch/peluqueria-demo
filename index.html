@@ -16,6 +16,11 @@
             --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* Desplazamiento suave habilitado */
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -236,53 +241,124 @@
             color: var(--accent-color);
         }
 
-        /* Contacto */
+        /* Contacto y Reservas MEJORADO */
         .contact-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 3.5rem;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.8rem;
         }
 
-        .info-item h4 {
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            background-color: #f0e6d2;
+            color: var(--accent-color);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-details h4 {
             color: var(--primary-color);
-            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .info-details p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .map-container {
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .contact-form {
             display: flex;
             flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .contact-form input, 
         .contact-form select, 
         .contact-form textarea {
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #fafafa;
+        }
+
+        .contact-form input:focus, 
+        .contact-form select:focus, 
+        .contact-form textarea:focus {
+            border-color: var(--accent-color);
+            background-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.15);
         }
 
         .contact-form button {
-            background-color: var(--primary-color);
+            background-color: var(--accent-color);
             color: var(--white);
             border: none;
             padding: 1rem;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
         }
 
         .contact-form button:hover {
-            background-color: var(--accent-color);
+            background-color: #b08d46;
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -300,6 +376,9 @@
                 display: none;
             }
             .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
                 grid-template-columns: 1fr;
             }
             .hero h1 {
@@ -444,45 +523,104 @@
         </div>
     </section>
 
-    <!-- Contacto y Reservas -->
+    <!-- Contacto y Reservas MEJORADO -->
     <section id="contacto">
         <div class="section-container">
             <p class="section-subtitle">Estamos a tu disposición</p>
-            <h2 class="section-title">Contacto & Citas</h2>
+            <h2 class="section-title">Reserva tu Cita</h2>
 
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="info-item">
-                        <h4>Dirección</h4>
-                        <p>Av. Principal de la Ciudad, 124, Madrid</p>
+                        <div class="info-icon">📍</div>
+                        <div class="info-details">
+                            <h4>Dirección</h4>
+                            <p>Av. Principal de la Ciudad, 124, Madrid</p>
+                        </div>
                     </div>
                     <div class="info-item">
-                        <h4>Teléfono / WhatsApp</h4>
-                        <p>+34 912 345 678 / +34 600 000 000</p>
+                        <div class="info-icon">📞</div>
+                        <div class="info-details">
+                            <h4>Teléfono / WhatsApp</h4>
+                            <p>+34 912 345 678 / +34 600 000 000</p>
+                        </div>
                     </div>
                     <div class="info-item">
-                        <h4>Correo Electrónico</h4>
-                        <p>contacto@lumierepeluqueria.com</p>
+                        <div class="info-icon">✉️</div>
+                        <div class="info-details">
+                            <h4>Correo Electrónico</h4>
+                            <p>contacto@lumierepeluqueria.com</p>
+                        </div>
                     </div>
                     <div class="info-item">
-                        <h4>Horario de Atención</h4>
-                        <p>Lunes a Viernes: 09:30 - 20:00 h</p>
-                        <p>Sábados: 09:00 - 14:00 h</p>
-                        <p>Domingos: Cerrado</p>
+                        <div class="info-icon">🕒</div>
+                        <div class="info-details">
+                            <h4>Horario de Atención</h4>
+                            <p>Lun - Vie: 09:30 - 20:00 h</p>
+                            <p>Sábados: 09:00 - 14:00 h</p>
+                            <p>Domingos: Cerrado</p>
+                        </div>
+                    </div>
+
+                    <!-- Mapa embebido de ubicación -->
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d194347.37810292727!2d-3.8196207086898705!3d40.43786981881585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0d42287d30370e71%3A0x2e3d392231934988!2sMadrid!5e0!3m2!1ses!2ses!4v1680000000000!5m2!1ses!2ses" 
+                            width="100%" 
+                            height="160" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
 
+                <!-- Formulario de Reserva Optimizado -->
                 <form class="contact-form" id="bookingForm">
-                    <input type="text" placeholder="Nombre completo" required>
-                    <input type="tel" placeholder="Número de teléfono" required>
-                    <select required>
-                        <option value="" disabled selected>Selecciona un servicio</option>
-                        <option value="corte">Corte & Peinado</option>
-                        <option value="color">Color / Mechas</option>
-                        <option value="tratamiento">Tratamiento Capilar</option>
-                    </select>
-                    <textarea rows="4" placeholder="Mensaje o fecha/hora preferida"></textarea>
-                    <button type="submit">Solicitar Cita</button>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" placeholder="Ej. Laura García" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" placeholder="+34 600 000 000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="servicio">Servicio Deseado</label>
+                        <select id="servicio" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="corte">Corte & Peinado</option>
+                            <option value="color">Color / Mechas Balayage</option>
+                            <option value="tratamiento">Tratamiento Capilar</option>
+                            <option value="otro">Consulta / Múltiples servicios</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fecha">Fecha Preferida</label>
+                            <input type="date" id="fecha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hora">Hora Preferida</label>
+                            <select id="hora" required>
+                                <option value="" disabled selected>Hora</option>
+                                <option value="mañana">Mañana (09:30 - 13:00)</option>
+                                <option value="tarde">Tarde (16:00 - 19:30)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Notas Adicionales (Opcional)</label>
+                        <textarea id="mensaje" rows="3" placeholder="Detalles extra sobre tu cabello o solicitud..."></textarea>
+                    </div>
+
+                    <button type="submit">Confirmar Solicitud de Cita</button>
                 </form>
             </div>
         </div>
